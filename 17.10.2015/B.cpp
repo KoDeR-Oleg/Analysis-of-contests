@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int N = 1e6+6;
+const int N = 2500;
 int a[N];
 
 int main(){
