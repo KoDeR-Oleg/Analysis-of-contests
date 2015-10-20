@@ -35,11 +35,11 @@ int main(){
     for(int i=n-1;i>=0;--i)
 		for(int j=m-1;j>=0;--j){
 			if(i+1<n) {
-                d2[i][j] = max(d2[i][j], d2[i+1][j]);
-            }
+				d2[i][j] = max(d2[i][j], d2[i+1][j]);
+			}
 			if(j+1<m) {
-                d2[i][j] = max(d2[i][j], d2[i][j+1]);
-            }
+				d2[i][j] = max(d2[i][j], d2[i][j+1]);
+			}
 		}
 
     int ans=0, a1=0, a2=0, ai=0, aj=0;
