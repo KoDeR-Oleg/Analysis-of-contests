@@ -27,19 +27,12 @@ int main(){
 
     for(int i=n-1;i>=0;--i)
         for(int j=m-1;j>=0;--j)
-            if(a[i]==b[j]){
-                d2[i][j] = 1;
-                if(i+1<n && j+1<m) d2[i][j]+=d2[i+1][j+1];
-            }
+            if(a[i]==b[j]) d2[i][j] = 1 + d2[i+1][j+1];
 
     for(int i=n-1;i>=0;--i)
         for(int j=m-1;j>=0;--j){
-            if(i+1<n) {
-                d2[i][j] = max(d2[i][j], d2[i+1][j]);
-            }
-            if(j+1<m) {
-                d2[i][j] = max(d2[i][j], d2[i][j+1]);
-            }
+            d2[i][j] = max(d2[i][j], d2[i+1][j]);
+            d2[i][j] = max(d2[i][j], d2[i][j+1]);
         }
 
     int ans=0, a1=0, a2=0, ai=0, aj=0;
@@ -61,10 +54,7 @@ int main(){
     memset(d2, 0, sizeof d2);
     for(int i=n-1;i>=0;--i)
         for(int j=m-1;j>=0;--j)
-            if(a[i]==b[j]){
-                d2[i][j] = 1;
-                if(i+1<n && j+1<m) d2[i][j]+=d2[i+1][j+1];
-            }
+            if(a[i]==b[j]) d2[i][j] = 1 + d2[i+1][j+1];
 
     for(int x=ai+1;x<n;++x)
         for(int y=aj+1;y<m;++y)
