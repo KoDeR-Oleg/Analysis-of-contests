@@ -9,6 +9,7 @@ char a[N], b[N];
 
 short d[N][N];
 short d2[N][N];
+short d3[N][N];
 
 int main(){
     int n, m;
@@ -30,32 +31,24 @@ int main(){
             if(a[i]==b[j]) d2[i][j] = 1 + d2[i+1][j+1];
 
     for(int i=n-1;i>=0;--i)
-        for(int j=m-1;j>=0;--j){
-            d2[i][j] = max(d2[i][j], d2[i+1][j]);
-            d2[i][j] = max(d2[i][j], d2[i][j+1]);
-        }
+        for(int j=m-1;j>=0;--j) 
+            d3[i][j] = max(d2[i][j], max(d3[i+1][j], d3[i][j+1]));
 
     int ans=0, a1=0, a2=0, ai=0, aj=0;
     for(int i=0;i<n;++i)
         for(int j=0;j<m;++j){
-            int res = d[i][j] + d2[i+1][j+1];
+            int res = d[i][j] + d3[i+1][j+1];
             if(ans<res){
                 ans = res;
                 a1 = d[i][j];
-                a2 = d2[i+1][j+1];
+                a2 = d3[i+1][j+1];
                 ai = i;
                 aj = j;
             }
         }
 
-    string s1 = string(a+ai-a1+1, a+ai+1);
-    string s2;
-
-    memset(d2, 0, sizeof d2);
-    for(int i=n-1;i>=0;--i)
-        for(int j=m-1;j>=0;--j)
-            if(a[i]==b[j]) d2[i][j] = 1 + d2[i+1][j+1];
-
+    string s1 = string(a+ai-a1+1, a+ai+1), s2;
+    
     for(int x=ai+1;x<n;++x)
         for(int y=aj+1;y<m;++y)
             if(d2[x][y]==a2){
@@ -68,3 +61,4 @@ int main(){
 
     return 0;
 }
+
