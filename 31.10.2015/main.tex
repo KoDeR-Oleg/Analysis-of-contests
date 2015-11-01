@@ -1,0 +1,40 @@
+\documentclass[a4paper,20pt,landscape]{extreport}
+
+\usepackage{../main}
+
+\begin{document}
+
+\definecolor{keyword}{rgb}{0.2,0.2,0.8}
+
+\lstset{ %
+language=C++,
+basicstyle=\small\ttfamily, % размер и начертание шрифта для подсветки кода
+numbers=left,               % где поставить нумерацию строк (слева\справа)
+numberstyle=\small,           % размер шрифта для номеров строк
+stepnumber=1,                   % размер шага между двумя номерами строк
+numbersep=8pt,                % как далеко отстоят номера строк от подсвечиваемого кода
+backgroundcolor=\color{white}, % цвет фона подсветки - используем \usepackage{color}
+keywordstyle=\color{keyword}\bfseries,
+stringstyle=\color{red},
+showspaces=false,            % показывать или нет пробелы специальными отступами
+showstringspaces=false,      % показывать или нет пробелы в строках
+showtabs=false,             % показывать или нет табуляцию в строках
+frame=none,              % рисовать рамку вокруг кода
+tabsize=4,                 % размер табуляции по умолчанию равен 2 пробелам
+captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+breaklines=true,           % автоматически переносить строки (да\нет)
+breakatwhitespace=false, % переносить строки только если есть пробел
+escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+}
+
+\input{title}
+
+\input{taskA}
+\newpage
+\input{taskB}
+\newpage
+\input{taskC}
+\newpage
+\input{taskD}
+
+\end{document}
